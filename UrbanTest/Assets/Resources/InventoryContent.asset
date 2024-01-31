@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42045b8f28f46d94c88e12df0b639572, type: 3}
+  m_Name: InventoryContent
+  m_EditorClassIdentifier: 
+  _weaponSkinItems:
+  - {fileID: 11400000, guid: 5d6f2c5cdce58064c8f1d5922e169f1f, type: 2}
+  - {fileID: 11400000, guid: ae7dc46a9bdcbf542a0f1db288c0a971, type: 2}
+  - {fileID: 11400000, guid: 775ace23a3e74a040b93447ffe34f58d, type: 2}
+  - {fileID: 11400000, guid: 29193b609ca52e64ab156cc40669be80, type: 2}
+  - {fileID: 11400000, guid: 0a8ac1aa056ce2a4791569f8bc708b17, type: 2}
+  - {fileID: 11400000, guid: b884a7d62e5adbb4a80cfa61e4454986, type: 2}
+  - {fileID: 11400000, guid: 400c011028314d14fb1a6566d8eee450, type: 2}
+  - {fileID: 11400000, guid: 4aade6e606d2c2c4e933e298d276c5c1, type: 2}
+  _armorSkinItems:
+  - {fileID: 11400000, guid: 7eac4e02b10b583488a7305d88030855, type: 2}
+  - {fileID: 11400000, guid: 8dccc45043177b54a8128da48f8c0b06, type: 2}
+  - {fileID: 11400000, guid: 0acebc8de12e18e49bc15125fe4a9be2, type: 2}
+  - {fileID: 11400000, guid: 91e68966e0f0d15498ad290292b8590d, type: 2}
+  - {fileID: 11400000, guid: d5c54cf393217be4484cdddf4b400d62, type: 2}
+  _ammoSkinItems:
+  - {fileID: 11400000, guid: 6a3349e48da43194da5390f2c0ec9c91, type: 2}
+  - {fileID: 11400000, guid: d4afa6b348887bd40b03457f753d5598, type: 2}
+  - {fileID: 11400000, guid: 44dd1ea82a5966741ae49ac2fac87fe0, type: 2}
+  - {fileID: 11400000, guid: f96ca0886d7050946a754569325e8ee6, type: 2}
+  - {fileID: 11400000, guid: 701a37742dc1cf24885097d49231a11f, type: 2}
+  - {fileID: 11400000, guid: 15cd73105b8ade9479571cc384744fd6, type: 2}
