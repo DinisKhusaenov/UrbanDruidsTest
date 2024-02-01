@@ -3,8 +3,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryItemView : MonoBehaviour
+public class InventoryItemView : MonoBehaviour, IPointerClickHandler
 {
+    public event Action<InventoryItemView> Click;
+
     [SerializeField] private Image _contentImage;
     [SerializeField] private Image _statusImage;
     [SerializeField] private IntValueView _statusBoost;
@@ -33,6 +35,16 @@ public class InventoryItemView : MonoBehaviour
     private void OnDisable()
     {
         _delete.onClick.RemoveListener(Delete);
+    }
+
+    public void OnPointerClick(PointerEventData eventData) => Click?.Invoke(this);
+
+    public void SetCount(int value)
+    {
+        if (value <= 0)
+            throw new ArgumentException(nameof(value));
+
+        _count.Show(value);
     }
 
     public void ShowButton() => _delete.gameObject.SetActive(true);
