@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class PlayerData
 {
@@ -17,9 +18,7 @@ public class PlayerData
         _inventoryAmmoSkins = new Dictionary<AmmoSkins, int>();
         _inventoryWeaponSkins = new Dictionary<WeaponSkins, int>();
 
-        _selectedAmmoSkin = AmmoSkins.ButtleBow;
-        _selectedArmorSkin = ArmorSkins.BanditLight;
-        _selectedWeaponSkin = WeaponSkins.AssassinDagger;
+        SelectInitialSkin();
     }
 
     [JsonConstructor]
@@ -64,7 +63,7 @@ public class PlayerData
         if (_inventoryArmorSkins.ContainsKey(armorSkin)) 
         {
             var count = _inventoryArmorSkins[armorSkin];
-            _inventoryArmorSkins.Add(armorSkin, count + 1);
+            _inventoryArmorSkins[armorSkin] = count + 1;
         }
         else
         {
@@ -77,7 +76,7 @@ public class PlayerData
         if (_inventoryAmmoSkins.ContainsKey(ammoSkin))
         {
             var count = _inventoryAmmoSkins[ammoSkin];
-            _inventoryAmmoSkins.Add(ammoSkin, count + 1);
+            _inventoryAmmoSkins[ammoSkin] = count + 1;
         }
         else
         {
@@ -90,11 +89,45 @@ public class PlayerData
         if (_inventoryWeaponSkins.ContainsKey(weaponSkin))
         {
             var count = _inventoryWeaponSkins[weaponSkin];
-            _inventoryWeaponSkins.Add(weaponSkin, count + 1);
+            _inventoryWeaponSkins[weaponSkin] = count + 1;
         }
         else
         {
             _inventoryWeaponSkins.Add(weaponSkin, 1);
         }
+    }
+
+    public void RemoveArmorSkin(ArmorSkins armorSkin)
+    {
+        if (_inventoryArmorSkins.ContainsKey(armorSkin))
+        {
+            _inventoryArmorSkins.Remove(armorSkin);
+            SelectInitialSkin();
+        }
+    }
+
+    public void RemoveAmmoSkin(AmmoSkins ammoSkin)
+    {
+        if (_inventoryAmmoSkins.ContainsKey(ammoSkin))
+        {
+            _inventoryAmmoSkins.Remove(ammoSkin);
+            SelectInitialSkin();
+        }
+    }
+
+    public void RemoveWeaponSkin(WeaponSkins weaponSkin)
+    {
+        if (_inventoryWeaponSkins.ContainsKey(weaponSkin))
+        {
+            _inventoryWeaponSkins.Remove(weaponSkin);
+            SelectInitialSkin();
+        }
+    }
+
+    private void SelectInitialSkin()
+    {
+        _selectedAmmoSkin = AmmoSkins.ButtleBow;
+        _selectedArmorSkin = ArmorSkins.BanditLight;
+        _selectedWeaponSkin = WeaponSkins.AssassinDagger;
     }
 }

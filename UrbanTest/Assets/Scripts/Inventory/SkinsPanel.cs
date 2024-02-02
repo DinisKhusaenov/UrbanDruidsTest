@@ -5,6 +5,7 @@ using UnityEngine;
 public class SkinsPanel : MonoBehaviour
 {
     public event Action<InventoryItemView> ItemViewClicked;
+    public event Action<InventoryItemView> ItemViewDestroyed;
 
     private List<InventoryItemView> _inventoryItems = new List<InventoryItemView>();
 
@@ -13,7 +14,7 @@ public class SkinsPanel : MonoBehaviour
 
     private SelectedSkinChecker _selectedSkinChecker;
 
-    public void Initialize(SelectedSkinChecker selectedSkinChecker)
+    public void Initialize(SelectedSkinChecker selectedSkinChecker) 
     {
         _selectedSkinChecker = selectedSkinChecker;
     }
@@ -31,6 +32,7 @@ public class SkinsPanel : MonoBehaviour
 
             spawnedItem.HideButton();
             spawnedItem.Click += OnItemViewClick;
+            spawnedItem.Destroyed += OnItemViewDestroyed;
 
             _selectedSkinChecker.Visit(spawnedItem.Item);
 
@@ -57,6 +59,12 @@ public class SkinsPanel : MonoBehaviour
     {
         Select(inventoryItemView);
         ItemViewClicked?.Invoke(inventoryItemView);
+    }
+
+    private void OnItemViewDestroyed(InventoryItemView inventoryItemView)
+    {
+        _inventoryItems.Remove(inventoryItemView);
+        ItemViewDestroyed?.Invoke(inventoryItemView);
     }
 
     private void CLear()

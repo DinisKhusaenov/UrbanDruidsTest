@@ -9,11 +9,13 @@ public class SkinBootstrap : MonoBehaviour
 
     private SkinSpawner _skinSpawner;
     private SkinFactory _skinFactory;
+    private SkinCollector _skinCollector;
 
-    private void Awake()
+    public void Initialize(SkinCollector skinCollector)
     {
+        _skinCollector = skinCollector;
         _skinFactory = new SkinFactory(_weapons, _ammos, _armors);
-        _skinSpawner = new SkinSpawner(_skinFactory);
+        _skinSpawner = new SkinSpawner(_skinFactory, skinCollector);
 
         _skinSpawner.Spawn();
     }

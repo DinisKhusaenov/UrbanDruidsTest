@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class InventoryItemView : MonoBehaviour, IPointerClickHandler
 {
     public event Action<InventoryItemView> Click;
+    public event Action<InventoryItemView> Destroyed;
 
     [SerializeField] private Image _contentImage;
     [SerializeField] private Image _statusImage;
@@ -51,5 +52,9 @@ public class InventoryItemView : MonoBehaviour, IPointerClickHandler
 
     public void HideButton() => _delete.gameObject.SetActive(false);
 
-    private void Delete() => Destroy(gameObject);
+    private void Delete()
+    {
+        Destroyed?.Invoke(this);
+        Destroy(gameObject);
+    }
 }
